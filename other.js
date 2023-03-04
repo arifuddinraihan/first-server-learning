@@ -6,4 +6,4 @@ const add = (num1 , num2) => {
 
 module.exports = {name , add};
 
-console.log(module.exports);
+// console.log(module.exports);
