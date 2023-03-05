@@ -24,8 +24,8 @@ const server = http.createServer((req, res) => {
         // res.write(data)
         // res.end()
 
-        fs.writeFile('newData.txt', 'Hello Node JS !!!!', (err)=>{
-            if(err){
+        fs.writeFile('newData.txt', 'Hello Node JS !!!!', (err) => {
+            if (err) {
                 res.write('Data failed to write')
                 res.end()
             } else {
@@ -39,3 +39,22 @@ const server = http.createServer((req, res) => {
 const PORT = 5000;
 server.listen(PORT)
 console.log(`Server is running at : ${PORT}`);
+
+
+
+const events = require('events')
+// console.log(events);
+const eventEmitter = new events.EventEmitter();
+
+// creating an envent
+const newEktaEvent = () => {
+    console.log("Dekho eita ekta notun Event !!!")
+}
+
+// assing the event handler to event emitter
+
+eventEmitter.on('tipo', newEktaEvent).newEktaEvent
+
+// firing the event via event emiiter
+
+eventEmitter.emit('tipo');
