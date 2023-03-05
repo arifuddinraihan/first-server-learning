@@ -2,23 +2,23 @@
 
 const { add } = require('./other.js')
 
-const http = require('http')
+const http = require('http');
+const fs = require('fs');
+
+// console.log(fs);
 
 const server = http.createServer((req, res) => {
     if (req.url == "/") {
-        res.writeHead(200, { "Content-type": "application/json" });
-        res.write(JSON.stringify({course : "ACC Node Mongo"}));
-        res.end();
-    }
-    else if (req.url == "/contact") {
-        res.writeHead(200, { "Content-type": "text/html" });
-        res.write('<p>This is Contact Page</p>');
-        res.end();
-    }
-    else if (req.url == "/about") {
-        res.writeHead(200, { "Content-type": "text/html" });
-        res.write('<p>This is About Page</p>');
-        res.end();
+        fs.readFile('data.txt', (err, data) => {
+            if (err) {
+                // console.log(err);
+                res.write('Failed to read Data !!!')
+                res.end()
+            } else {
+                res.write(data)
+                res.end()
+            }
+        })
     }
 });
 
